@@ -8,13 +8,14 @@ import ConfirmationNumberOutlined from '@mui/icons-material/ConfirmationNumberOu
 
 import useSWR from 'swr';
 import { AdminLayout } from '@layouts';
+import { formatPrice } from '@utils';
 import type { IOrder, IUser } from '@interfaces';
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'Orden ID', width: 250 },
   { field: 'email', headerName: 'Correo', width: 250 },
   { field: 'name', headerName: 'Nombre Completo', width: 300 },
-  { field: 'total', headerName: 'Monto total', width: 150 },
+  { field: 'total', headerName: 'Monto total', renderCell: ({ row }) => formatPrice(row.total), width: 150 },
   {
     field: 'isPaid',
     headerName: 'Pagada',
